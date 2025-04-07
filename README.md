@@ -36,3 +36,45 @@ def do_somthing(name):
 do_somthing("hello")
 ```
 
+#### Django中的同步和异步该怎么执行
+以下是同步写法的异步方式，通过async和await配合，结果将在1秒后输出内容
+```
+import asyncio
+async def async_hello(request):
+    await asyncio.sleep(1)  # 模拟耗时任务
+    return JsonResponse({'message': 'Hello from async view!'})
+```
+但是Django中的ORM并不会变成异步，这个过程是同步的，这里会出现报错
+```
+async def view(request):
+    user = await User.objects.get(id=1)
+```
+并发执行的话需要通过``asyncio.create_task(method_name)``来创建新的线程去执行代码
+```
+import asyncio
+
+async def greet():
+    print("Hello")
+    await asyncio.sleep(1)
+    print("World")
+
+async def main():
+    task = asyncio.create_task(greet())
+    await task
+```
+如果在生产环境想进行异步执行的话，可以使用celery
+```
+# tasks.py
+from celery import shared_task
+@shared_task
+def insert_data(data):
+    Record.objects.create(**data)
+```
+
+```
+# views.py
+def sync_view(request):
+    insert_data.delay({"name": "Charlie"})  # ✅ 异步提交任务
+    return JsonResponse({"msg": "后台已提交，主流程返回"})
+```
+
