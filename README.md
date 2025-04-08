@@ -79,7 +79,7 @@ def sync_view(request):
 ```
 
 
-关于链式调用方法的简要
+#### 关于链式调用方法的简要
 ```
 当我想创建一个链式调用的时候，将要创建的内容后面加上一个Builder，例如AccountBuilder，在方法中不断返回this
 class AccountBuilder:
