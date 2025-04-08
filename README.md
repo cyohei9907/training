@@ -78,3 +78,22 @@ def sync_view(request):
     return JsonResponse({"msg": "后台已提交，主流程返回"})
 ```
 
+
+关于链式调用方法的简要
+```
+当我想创建一个链式调用的时候，将要创建的内容后面加上一个Builder，例如AccountBuilder，在方法中不断返回this
+class AccountBuilder:
+    def __init__(self):
+        self.acc = ""
+
+    def doSomething1(self):
+        self.acc += "Step1 "
+        return self  # ✅ 链式调用关键点
+
+    def doSomething2(self):
+        self.acc += "Step2 "
+        return self
+
+    def getAcc(self):
+        return self.acc
+```
