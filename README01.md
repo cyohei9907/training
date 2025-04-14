@@ -1,22 +1,22 @@
 # Python Training
 
-#### MRO是什么
+MRO是什么
 MRO是多继承的时候，如果一个类继承两个类的时候，按照继承顺序进行同名方法的优先级排序 进行的排序方法是C3 线性化算法
 
 
-#### ``__init__`` 和 ``__new__`` 有什么区别
+``__init__`` 和 ``__new__`` 有什么区别
 ``__init__`` 是python类中的数值的初始化，也可以在floder下创建 ``__init__.py`` 文件,这样表示当前文件夹是一个可以导入的包
 
 
-#### ``__all__``和``__init__``一般怎么进行配合
+``__all__``和``__init__``一般怎么进行配合
 ``__all__``可以控制需要导出的方法类，其中``__all__==['method_name_a','method_name_b']``这样可以控制让其只输出两个方法
 
 
-#### ``**kwargs``和``*args``这两个参数有什么区别
+``**kwargs``和``*args``这两个参数有什么区别
 ``**kwargs``可以用来接收未定义的key value键值对形式参数 例如: { name1:value1, name2:value2 }
 ``*args``可以用来接收未定义的元组形式参数 例如: (1,2,3)
 
-#### 装饰器方法怎么使用，有什么作用
+装饰器方法怎么使用，有什么作用
 ```
 from functools import wraps
 
@@ -36,7 +36,7 @@ def do_somthing(name):
 do_somthing("hello")
 ```
 
-#### Django中的同步和异步该怎么执行
+Django中的同步和异步该怎么执行
 以下是同步写法的异步方式，通过async和await配合，结果将在1秒后输出内容
 ```
 import asyncio
@@ -79,7 +79,7 @@ def sync_view(request):
 ```
 
 
-#### 关于链式调用方法的简要
+关于链式调用方法的简要
 ```
 当我想创建一个链式调用的时候，将要创建的内容后面加上一个Builder，例如AccountBuilder，在方法中不断返回this
 class AccountBuilder:
