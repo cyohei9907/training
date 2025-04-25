@@ -55,18 +55,33 @@ match status:
     case _:
         print("其他错误")
 ```
-遍历操作
+遍历操作使用for in即可进入迭代循环，在不知道对象原始是否支持迭代的时候
+只要先用for item in items进行简单操作后即可知道是否能迭代
+后面的或者更适合的方式就和文档相关了
 ```
 遍历字典
-  for key,value in users_dict.items()
-    print(f'{key}:{value})
+    for key,value in users_dict.items()
+        print(f'{key}:{value})
 遍历列表
+    for item in args:
+        print(item)
 遍历元组
+    for item in args:
+        print(item)
 遍历集合
+    for item in item_set:
+        print(item)
 带index遍历
-  for index, fruit in enumerate(fruits):
-    print(index, fruit)
+    for index, fruit in enumerate(fruits):
+        print(index, fruit)
 固定次数遍历
-  for i in rang(5)
-    print(i)
+    for i in rang(5)
+        print(i)
+```
+
+enumerate是什么
+```
+enumerate返回一个enum对象，实际上是index 加上 value
+for index ,value in enumrate(items):
+    print(f'{index}:value')
 ```
